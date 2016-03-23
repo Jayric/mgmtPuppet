@@ -1,0 +1,16 @@
+
+127.0.0.1       localhost
+127.0.1.1       <%= hostname %>.Debian75 storage
+#rh deb test
+# The following lines are desirable for IPv6 capable hosts
+::1     localhost ip6-localhost ip6-loopback
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+
+10.25.1.51 app app.micro-agents.net
+10.25.1.52 mgmt mgmt.micro-agents.net
+10.25.1.53 storage storage.micro-agents.net
+10.25.1.54 ad ad.directory.micro-agents.net
+10.25.1.55 db db.micro-agents.net
+
+<%= ipaddress %> <%= hostname %>.Debian75 <%= hostname %>
