@@ -21,6 +21,18 @@ class nagios3::config{
 	email => 'root@localhost',
 	}
 
+	nagios_contact { 'jwatpisit' :
+        target => "/etc/nagios3/conf.d/ppt_contacts.cfg",
+        alias => "Jay Watphisit",
+        service_notification_period => "24x7",
+        host_notification_period => "24x7",
+        service_notification_options => 'w,u,c,r',
+        host_notification_options => 'd,r',
+        service_notification_commands => 'notify-service-by-email',
+        host_notification_commands => 'notify-host-by-email',
+        email => 'root@localhost',
+        }
+
 	nagios_contactgroup { 'sysadmins':
 	target => '/etc/nagios3/conf.d/ppt_contactgroups.cfg',
 	alias => 'Systems Administrators',
@@ -45,7 +57,7 @@ class nagios3::config{
 	service_description => 'MySQL DB',
 	hostgroup_name => 'db-servers',
 	target => '/etc/nagios3/conf.d/ppt_mysql_service.cfg',
-	check_command => 'check_mysql',
+	check_command => 'check_mysql_cmdlinecred!$USER3$!$USER4$',
 	max_check_attempts => 3,
 	retry_check_interval => 1,
 	normal_check_interval => 5,
