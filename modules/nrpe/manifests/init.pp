@@ -8,7 +8,7 @@ class nrpe {
 }
 
 class nrpe::db_nrpe_config{
-	file{"/etc/nagios" :
+	file{"/etc/nagios/nrpe.cfg" :
 	ensure => present,
 	owner => 'root',
 	group => 'root',
