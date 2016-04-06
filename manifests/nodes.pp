@@ -6,6 +6,7 @@ node default {
 }
 node 'db.micro-agents.net' inherits default {
   include mysql
+  include nrpe
 }
 
 
