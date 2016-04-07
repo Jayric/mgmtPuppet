@@ -36,7 +36,7 @@ class nagios3::config{
 	nagios_contactgroup { 'sysadmins':
 	target => '/etc/nagios3/conf.d/ppt_contactgroups.cfg',
 	alias => 'Systems Administrators',
-	members => 'rhorne', 'jwatphisit',
+	members => 'rhorne, jwatpisit',
 	}
 
 	nagios_host { 'db.micro-agents.net':
@@ -67,11 +67,11 @@ class nagios3::config{
 	notification_options => 'w,u,c',
 	contact_groups => 'sysadmins',
 	}
-
+	
 	nagios_service {'Remote-Disks':
 	service_description => 'Check DB Disk',
 	hostgroup_name => 'db-servers',
-	target => '/etc/nagios-plugins/config/check_nrpe.cfg',
+	target => '/etc/nagios3/conf.d/ppt_CheckDBDisk.cfg',
 	check_command => 'check_nrpe_1arg!check_hda',
 	max_check_attempts => 3,
 	retry_check_interval => 1,
@@ -82,7 +82,6 @@ class nagios3::config{
 	notification_options => 'w,u,c',
 	contact_groups => 'sysadmins',
 	}
-
 
 	nagios_hostgroup{'db-servers':
 	target => '/etc/nagios3/conf.d/ppt_hostgroups.cfg',
