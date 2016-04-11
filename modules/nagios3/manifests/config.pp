@@ -118,7 +118,7 @@ class nagios3::config{
 	nagios_hostgroup{'linux-Standard-Monitor':
 	target => '/etc/nagios3/conf.d/ppt_hostgroups.cfg',
 	alias => 'Linux Servers',
-	members => 'db.micro-agents.net,app.micro-agents.net,storage.micro-agents.net,db.micro-agents.net',
+	members => 'db.micro-agents.net,app.micro-agents.net,storage.micro-agents.net',
 	}
 	
 
