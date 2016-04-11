@@ -96,7 +96,7 @@ class nagios3::config{
 	
 	nagios_service {'Remote-Disks':
 	service_description => 'Check DB Disk',
-	hostgroup_name => 'db-servers',
+	hostgroup_name => 'db-servers,linux-Standard-Monitor',
 	target => '/etc/nagios3/conf.d/ppt_CheckDBDisk.cfg',
 	check_command => 'check_nrpe_1arg!check_hda',
 	max_check_attempts => 3,
