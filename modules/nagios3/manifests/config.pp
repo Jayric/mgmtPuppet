@@ -50,6 +50,32 @@ class nagios3::config{
 	notification_period => '24x7',
 	notification_options => 'd,u,r',
 	contact_groups => 'sysadmins',
+	}
+
+	nagios_host { 'storage.micro-agents.net':
+	target => '/etc/nagios3/conf.d/ppt_hosts.cfg',
+	alias => 'db',
+	address => '10.25.1.53',
+	check_period => '24x7',
+	max_check_attempts => 3,
+	check_command => 'check-host-alive',
+	notification_interval => 30,
+	notification_period => '24x7',
+	notification_options => 'd,u,r',
+	contact_groups => 'sysadmins',
+	}
+	
+	nagios_host { 'app.micro-agents.net':
+	target => '/etc/nagios3/conf.d/ppt_hosts.cfg',
+	alias => 'db',
+	address => '10.25.1.51',
+	check_period => '24x7',
+	max_check_attempts => 3,
+	check_command => 'check-host-alive',
+	notification_interval => 30,
+	notification_period => '24x7',
+	notification_options => 'd,u,r',
+	contact_groups => 'sysadmins',
 	}	
 	
 
