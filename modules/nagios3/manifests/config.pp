@@ -95,8 +95,8 @@ class nagios3::config{
 	}
 	
 	nagios_service {'Remote-Disks':
-	service_description => 'Check DB Disk',
-	hostgroup_name => 'db-servers,linux-Standard-Monitor',
+	service_description => 'Check Disk low on space',
+	hostgroup_name => 'linux-Standard-Monitor',
 	target => '/etc/nagios3/conf.d/ppt_CheckDBDisk.cfg',
 	check_command => 'check_nrpe_1arg!check_hda',
 	max_check_attempts => 3,
@@ -118,7 +118,7 @@ class nagios3::config{
 	nagios_hostgroup{'linux-Standard-Monitor':
 	target => '/etc/nagios3/conf.d/ppt_hostgroups.cfg',
 	alias => 'Linux Servers',
-	members => 'db.micro-agents.net,app.micro-agents.net,storage.micro-agents.net',
+	members => 'db.micro-agents.net,app.micro-agents.net,storage.micro-agents.net,db.micro-agents.net',
 	}
 	
 
