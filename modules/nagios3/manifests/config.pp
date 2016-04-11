@@ -54,7 +54,7 @@ class nagios3::config{
 
 	nagios_host { 'storage.micro-agents.net':
 	target => '/etc/nagios3/conf.d/ppt_hosts.cfg',
-	alias => 'db',
+	alias => 'Storage',
 	address => '10.25.1.53',
 	check_period => '24x7',
 	max_check_attempts => 3,
@@ -67,7 +67,7 @@ class nagios3::config{
 	
 	nagios_host { 'app.micro-agents.net':
 	target => '/etc/nagios3/conf.d/ppt_hosts.cfg',
-	alias => 'db',
+	alias => 'App',
 	address => '10.25.1.51',
 	check_period => '24x7',
 	max_check_attempts => 3,
