@@ -24,7 +24,7 @@ class nrpe::db_nrpe_config{
 	mode => 0644,
 	content => template('nrpe/db_nrpeconfig.erb'),
 	}
-	
+}
 	class nrpe::storage_nrpe_config{
 	file{"/etc/nagios/nrpe.cfg" :
 	ensure => present,
@@ -33,7 +33,7 @@ class nrpe::db_nrpe_config{
 	mode => 0644,
 	content => template('nrpe/storage_nrpeconfig.erb'),
 	}
-	
+}
 	class nrpe::app_nrpe_config{
 	file{"/etc/nagios/nrpe.cfg" :
 	ensure => present,
@@ -42,4 +42,5 @@ class nrpe::db_nrpe_config{
 	mode => 0644,
 	content => template('nrpe/app_nrpeconfig.erb'),
 	}
-}	
+}
+	
