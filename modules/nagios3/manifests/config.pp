@@ -125,6 +125,52 @@ class nagios3::config{
 	contact_groups => 'sysadmins',
 	}
 	
+	nagios_service {'Remote-Users':
+	service_description => 'Check logged on Users',
+	hostgroup_name => 'linux-Standard-Monitor',
+	target => '/etc/nagios3/conf.d/ppt_Check_Remote_User_Load.cfg',
+	check_command => 'check_nrpe_1arg!check_users',
+	max_check_attempts => 3,
+	retry_check_interval => 1,
+	normal_check_interval => 5,
+	check_period => '24x7',
+	notification_interval => 30,
+	notification_period => '24x7',
+	notification_options => 'w,u,c',
+	contact_groups => 'sysadmins',
+	}
+	
+	nagios_service {'Remote-Processes-Total':
+	service_description => 'Check Total number of processes',
+	hostgroup_name => 'linux-Standard-Monitor',
+	target => '/etc/nagios3/conf.d/ppt_Check_Remote_Process_Total.cfg',
+	check_command => 'check_nrpe_1arg!check_total_procs',
+	max_check_attempts => 3,
+	retry_check_interval => 1,
+	normal_check_interval => 5,
+	check_period => '24x7',
+	notification_interval => 30,
+	notification_period => '24x7',
+	notification_options => 'w,u,c',
+	contact_groups => 'sysadmins',
+	}
+	
+	nagios_service {'Remote-Processes-Zombie':
+	service_description => 'Check for Zombie processes',
+	hostgroup_name => 'linux-Standard-Monitor',
+	target => '/etc/nagios3/conf.d/ppt_Check_Zombie_Process.cfg',
+	check_command => 'check_nrpe_1arg!check_zombie_procs',
+	max_check_attempts => 3,
+	retry_check_interval => 1,
+	normal_check_interval => 5,
+	check_period => '24x7',
+	notification_interval => 30,
+	notification_period => '24x7',
+	notification_options => 'w,u,c',
+	contact_groups => 'sysadmins',
+	}
+	
+	
 
 	nagios_hostgroup{'db-servers':
 	target => '/etc/nagios3/conf.d/ppt_hostgroups.cfg',
