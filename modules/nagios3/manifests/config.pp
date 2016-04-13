@@ -18,7 +18,7 @@ class nagios3::config{
 	host_notification_options => 'd,r',
 	service_notification_commands => 'notify-service-by-email',
 	host_notification_commands => 'notify-host-by-email',
-	email => 'root@localhost',
+	email => 'hornerb1@student.op.ac.nz',
 	}
 
 	nagios_contact { 'jwatpisit' :
@@ -30,7 +30,7 @@ class nagios3::config{
         host_notification_options => 'd,r',
         service_notification_commands => 'notify-service-by-email',
         host_notification_commands => 'notify-host-by-email',
-        email => 'root@localhost',
+        email => 'watphv1@studnet.op.ac.nz',
         }
 
 	nagios_contactgroup { 'sysadmins':
