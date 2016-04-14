@@ -30,13 +30,36 @@ class nagios3::config{
         host_notification_options => 'd,r',
         service_notification_commands => 'notify-service-by-email',
         host_notification_commands => 'notify-host-by-email',
-        email => 'watphv1@studnet.op.ac.nz',
+        email => 'watphv1@student.op.ac.nz',
         }
+
+	nagios_contact {'slack':
+      	target => "/etc/nagios3/conf.d/ppt_slack_nagios.cfg",
+      	alias => "Slack",
+      	service_notification_period => "24x7",
+      	host_notification_period => "24x7",
+      	service_notification_options => 'w,u,c,r',
+      	host_notification_options => 'd,r',
+      	service_notification_commands => "notify-service-by-slack",
+      	host_notification_commands => "notify-host-by-slack",
+	}	
+
+	nagios_command {'Slack_command_service':
+      	command_name => "notify-service-by-slack",
+      	target => "/etc/nagios3/conf.d/ppt_slack_nagios.cfg",
+      	command_line => '/usr/local/bin/slack_nagios.pl -field slack_channel=team1 -field HOSTALIAS="$HOSTNAME$" -field SERVICEDESC="$SERVICEDESC$" -field SERVICESTATE="$SERVICESTATE$" -field SERVICEOUTPUT="$SERVICEOUTPUT$" -field NOTIFICATIONTYPE="$NOTIFICATIONTYPE$"',
+	}
+
+	nagios_command {'Slack-Host' :
+      	command_name => "notify-host-by-slack",
+      	target => "/etc/nagios3/conf.d/ppt_slack_nagios.cfg",
+      	command_line => '/usr/local/bin/slack_nagios.pl -field slack_channel=team1 -field HOSTALIAS="$HOSTNAME$" -field HOSTSTATE="$HOSTSTATE$" -field HOSTOUTPUT="$HOSTOUTPUT$" -field NOTIFICATIONTYPE="$NOTIFICATIONTYPE$"',
+	}
 
 	nagios_contactgroup { 'sysadmins':
 	target => '/etc/nagios3/conf.d/ppt_contactgroups.cfg',
 	alias => 'Systems Administrators',
-	members => 'rhorne, jwatpisit',
+	members => 'rhorne, jwatpisit, slack',
 	}
 
 	nagios_host { 'db.micro-agents.net':

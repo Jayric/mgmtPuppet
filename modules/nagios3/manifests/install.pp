@@ -17,6 +17,14 @@ class nagios3::install{
 	ensure => present,
 	}
 
+	package{"libwww-perl" :
+	ensure => present,
+	}
+
+	package{"libcrypt-ssleay-perl" :
+	ensure => present,
+	}	
+
  }
 
 
