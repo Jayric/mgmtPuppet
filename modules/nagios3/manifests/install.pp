@@ -28,6 +28,13 @@ class nagios3::install{
 	package{"nagios-nrpe-plugin" :
 	ensure => present,
 	}
+	
+	file{'/usr/local/bin/slack_nagios.pl':
+	owner => "root",
+	group => "staff",
+	mode => "755",
+	source => "puppet://modules/nagios3/slack_nagios.pl",
+	}
 
  }
 
