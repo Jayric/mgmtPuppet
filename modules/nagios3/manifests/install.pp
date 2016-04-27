@@ -23,7 +23,11 @@ class nagios3::install{
 
 	package{"libcrypt-ssleay-perl" :
 	ensure => present,
-	}	
+	}
+
+	package{"nagios-nrpe-plugin" :
+	ensure => present,
+	}
 
  }
 
