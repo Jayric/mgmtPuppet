@@ -204,6 +204,8 @@ command[check_hda]=/usr/lib/nagios/plugins/check_disk -w 20% -c 10% -p /dev/sda1
 command[check_zombie_procs]=/usr/lib/nagios/plugins/check_procs -w 5 -c 10 -s Z
 command[check_total_procs]=/usr/lib/nagios/plugins/check_procs -w 250 -c 280 
 command[check_mem]=/usr/lib/nagios/plugins/check_mem -f -w 20 -c 10
+command[check_ssh]=/usr/lib/nagios/plugins/check_ssh localhost
+
 
 # The following examples allow user-supplied arguments and can
 # only be used if the NRPE daemon was compiled with support for 
