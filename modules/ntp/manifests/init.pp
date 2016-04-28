@@ -1,3 +1,5 @@
 class ntp {
-       include ntp::install
+       package { 'ntp':
+	ensure => present,
+	}
 }
