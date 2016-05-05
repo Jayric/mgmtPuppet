@@ -4,6 +4,7 @@ node default {
   include sudo
   include hosts_file
   include ntp
+  include bacula-file
   
 }
 node 'db.micro-agents.net' inherits default {
@@ -20,6 +21,8 @@ node 'mgmt.micro-agents.net' inherits default {
 node 'storage.micro-agents.net' inherits default
 {
 	include nrpe
+	include bacula-director
+	include bacula-storage
 }
 
 node 'app.micro-agents.net' inherits default
