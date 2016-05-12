@@ -29,7 +29,10 @@ node 'app.micro-agents.net' inherits default
 {
 	include nrpe
 }
-
+node 'app-1.micro-agents.net' inherits default
+{
+	include nrpe
+}
 node 'ad.directory.micro-agents.net' {
  include hosts_file
 }

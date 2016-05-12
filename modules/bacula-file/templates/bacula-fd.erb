@@ -1,0 +1,43 @@
+#
+# Default  Bacula File Daemon Configuration file
+#
+#  For Bacula release 5.2.6 (21 February 2012) -- debian 7.0
+#
+# There is not much to change here except perhaps the
+# File daemon Name to
+#
+
+#
+# List Directors who are permitted to contact this File daemon
+#
+Director {
+  Name = storage.micro-agents.net-dir
+  Password = "n6dvdw9ttw_umtv24jf-h_qgbltv19j_b"
+}
+
+#
+# Restricted Director, used by tray-monitor to get the
+#   status of the file daemon
+#
+Director {
+  Name = storage.micro-agents.net-mon
+  Password = "4SoIbg9HJlkmK78OR7afAuB_3LH4owO1-"
+  Monitor = yes
+}
+
+#
+# "Global" File daemon configuration specifications
+#
+FileDaemon {                          # this is me
+  Name = <%= fqdn %>-fd
+  FDport = 9102                  # where we listen for the director
+  WorkingDirectory = /var/lib/bacula
+  Pid Directory = /var/run/bacula
+  Maximum Concurrent Jobs = 20
+}
+
+# Send all messages except skipped files back to Director
+Messages {
+  Name = Standard
+  director = storage.micro-agents.net-dir = all, !skipped, !restored
+}
