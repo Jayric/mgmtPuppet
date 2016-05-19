@@ -17,4 +17,13 @@ class mysql::config {
    require => Class["mysql::install"],
    notify => Class["mysql::service"],
   }
+
+  cron{'mySql_DB_Backup':
+	ensure => 'present',
+	command => 'mysqldump --all-databases > /home/dbbackup/db-backup.sql',
+	user => 'root',
+	hour => '1',
+	minute => '30',
+	
+ }
 } 
