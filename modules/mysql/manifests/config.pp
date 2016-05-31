@@ -20,7 +20,7 @@ class mysql::config {
 
   cron{'mySql_DB_Backup':
 	ensure => 'present',
-	command => 'mysqldump --all-databases > /home/dbbackup/db-backup.sql',
+	command => 'mysqldump --all-databases > /home/dbBackup/db-backup.sql',
 	user => 'root',
 	hour => '1',
 	minute => '30',
